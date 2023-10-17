@@ -1,0 +1,22 @@
+name: Sync File
+
+on:
+  registry_package:
+    types: [published]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create file
+        run: |
+          FILENAME=$(echo "${{ github.event.package.name }}")
+          touch $FILENAME
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add $FILENAME
+          git commit -m "Add file $FILENAME"
+          git push
