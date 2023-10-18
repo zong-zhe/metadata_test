@@ -4,6 +4,9 @@ on:
   registry_package:
     types: [published]
 
+env:
+  PR_NUMBER: ${{ github.event. }}
+
 jobs:
   monitor_image:
     runs-on: ubuntu-latest
@@ -13,5 +16,5 @@ jobs:
 
       - name: Get image name
         run: |
-          image_name="${{ github.event.id }}"
+          image_name="${{ github.event_name }}"
           echo "Image Name: $image_name"
