@@ -14,8 +14,18 @@ jobs:
       - name: ${{ github.event.registry_package.name }} uploaded to GHCR
         run: |
           image_name="${{ github.event.registry_package.name }}"
+          registry_about_url="${{ github.event.registry_package.registry.about_url }}"
+          name="${{ github.event.registry_package.registry.name }}"
+          type="${{ github.event.registry_package.registry.type }}"
+          url="${{ github.event.registry_package.registry.url }}"
+          vendor="${{ github.event.registry_package.registry.vendor }}"
           tag_name="${{ github.event.registry_package.package_version.container_metadata.tag.name }}"
           tag_name_1="${{ github.event.registry_package }}"
           echo "Image Name: $image_name"
           echo "Image Name: $tag_name"
           echo "Image Name: $tag_name_1"
+          echo "Image Name: $registry_about_url"
+          echo "Image Name: $name"
+          echo "Image Name: $type"
+          echo "Image Name: $url"
+           echo "Image Name: $vendor"
