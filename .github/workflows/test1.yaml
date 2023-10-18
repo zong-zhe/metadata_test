@@ -1,0 +1,12 @@
+name: Sync File
+
+on:
+  registry_package:
+    types: [published]
+
+jobs:
+  print-package-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get package name
+        run: echo "The package name is ${{ github.event.package.name }}"
