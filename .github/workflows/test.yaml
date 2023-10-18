@@ -11,7 +11,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Get image name
+      - name: ${{ github.event.registry_package.name }} uploaded to GHCR
         run: |
-          image_name="${{ github.event_name }}"
+          image_name="${{ github.event.registry_package.name }}"
+          tag_name = "${{ github.event.registry_package.package_version.container_metadata.tag.name }}"
           echo "Image Name: $image_name"
