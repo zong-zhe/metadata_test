@@ -1,12 +1,17 @@
-name: Sync File
-
+name: Monitor GHCR Images
 on:
   registry_package:
-    types: [published]
+    types:
+      - created
 
 jobs:
-  print-package-name:
+  monitor_image:
     runs-on: ubuntu-latest
     steps:
-      - name: Get package name
-        run: echo "The package name is ${{ github.event.package.name }}"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get image name
+        run: |
+          image_name="${{ github.event.client_payload.container.tags[0] }}"
+          echo "Image Name: $image_name"
