@@ -28,4 +28,4 @@ jobs:
           echo "name : $name"
           echo "type : $type"
           echo "url : $url"
-           echo "vendor : $vendor"
+          echo "vendor : $vendor"
