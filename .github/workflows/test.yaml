@@ -13,5 +13,5 @@ jobs:
 
       - name: Get image name
         run: |
-          image_name="${{ github.event.client_payload.container.tags[0] }}"
+          image_name="${{ github.event.id }}"
           echo "Image Name: $image_name"
