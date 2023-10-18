@@ -14,5 +14,8 @@ jobs:
       - name: ${{ github.event.registry_package.name }} uploaded to GHCR
         run: |
           image_name="${{ github.event.registry_package.name }}"
-          tag_name = "${{ github.event.registry_package }}"
+          tag_name="${{ github.event.registry_package.package_version.container_metadata.tag.name }}"
+          tag_name_1="${{ github.event.registry_package }}"
           echo "Image Name: $image_name"
+          echo "Image Name: $tag_name"
+          echo "Image Name: $tag_name_1"
